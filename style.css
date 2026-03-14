@@ -1,19 +1,33 @@
+/* Page background */
+
 body{
-font-family: Arial;
+font-family: Arial, sans-serif;
 margin:0;
-background:#f4f4f4;
+padding:0;
+background: linear-gradient(120deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
 }
+
+/* Header */
 
 header{
 background:#ff5722;
 color:white;
 text-align:center;
 padding:20px;
+box-shadow:0 3px 10px rgba(0,0,0,0.3);
 }
 
-h2{
-text-align:center;
+header h1{
+margin:0;
+font-size:32px;
 }
+
+header p{
+margin-top:5px;
+font-size:16px;
+}
+
+/* Menu section */
 
 .menu{
 display:flex;
@@ -23,58 +37,81 @@ gap:20px;
 padding:20px;
 }
 
+/* Food card */
+
 .food{
 background:white;
 width:220px;
 padding:15px;
-border-radius:10px;
+border-radius:12px;
 text-align:center;
-box-shadow:0 0 6px gray;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:transform 0.3s;
 }
+
+.food:hover{
+transform:scale(1.05);
+}
+
+/* Food images */
 
 .food img{
 width:100%;
+height:140px;
+object-fit:cover;
 border-radius:10px;
 }
+
+/* Buttons */
 
 button{
 background:#ff5722;
 color:white;
 border:none;
-padding:10px;
-margin-top:10px;
+padding:10px 15px;
+border-radius:6px;
 cursor:pointer;
-border-radius:5px;
+font-size:14px;
+margin-top:8px;
 }
 
 button:hover{
 background:#e64a19;
 }
 
+/* Cart section */
+
 .order-box{
 background:white;
-padding:20px;
-width:300px;
+width:80%;
+max-width:500px;
 margin:20px auto;
-border-radius:10px;
-box-shadow:0 0 6px gray;
-}
-
-input{
-width:100%;
-padding:8px;
-margin:8px 0;
-}
-
-.rating{
+padding:20px;
+border-radius:12px;
 text-align:center;
-margin-top:20px;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
+
+/* Location section */
+
+.location-box{
+text-align:center;
+margin:20px;
+}
+
+/* Headings */
+
+h2{
+text-align:center;
+color:#333;
+}
+
+/* Footer */
 
 footer{
 background:#333;
 color:white;
 text-align:center;
-padding:10px;
+padding:12px;
 margin-top:30px;
 }
