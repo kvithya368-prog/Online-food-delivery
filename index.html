@@ -1,141 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <title>Smart Food Delivery</title>
-
-<style>
-
-body{
-font-family: Arial;
-margin:0;
-background:#f4f4f4;
-}
-
-header{
-background:#ff5722;
-color:white;
-text-align:center;
-padding:20px;
-}
-
-h2{
-text-align:center;
-}
-
-.menu{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-padding:20px;
-}
-
-.food{
-background:white;
-width:220px;
-padding:15px;
-border-radius:10px;
-text-align:center;
-box-shadow:0 0 6px gray;
-}
-
-.food img{
-width:100%;
-border-radius:10px;
-}
-
-button{
-background:#ff5722;
-color:white;
-border:none;
-padding:10px;
-margin-top:10px;
-cursor:pointer;
-border-radius:5px;
-}
-
-button:hover{
-background:#e64a19;
-}
-
-.order-box{
-background:white;
-padding:20px;
-width:300px;
-margin:20px auto;
-border-radius:10px;
-box-shadow:0 0 6px gray;
-}
-
-input{
-width:100%;
-padding:8px;
-margin:8px 0;
-}
-
-.rating{
-text-align:center;
-margin-top:20px;
-}
-
-footer{
-background:#333;
-color:white;
-text-align:center;
-padding:10px;
-margin-top:30px;
-}
-
-</style>
-
-<script>
-
-function selectFood(food){
-document.getElementById("foodname").value=food;
-}
-
-function placeOrder(){
-alert("Order placed successfully!");
-}
-
-function recommendFood(){
-
-let hour = new Date().getHours()
-let food
-
-if(hour < 12){
-food = "Sandwich"
-}
-else if(hour < 18){
-food = "Burger"
-}
-else{
-food = "Pizza"
-}
-
-document.getElementById("recommend").innerHTML =
-"Recommended food for you: " + food
-
-}
-
-function submitRating(){
-
-let rating = document.getElementById("rate").value
-
-alert("Thank you for rating: " + rating + " stars")
-
-}
-
-</script>
-
+<link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="recommendFood()">
+<body>
 
 <header>
-<h1>Smart Online Food Delivery</h1>
-<p>Order food easily and quickly</p>
+<h1>Smart Food Delivery</h1>
+<p>Healthy & Smart Online Food Ordering</p>
 </header>
+
+<div class="location-box">
+<button onclick="getLocation()">📍 Get My Location</button>
+<p id="location"></p>
+</div>
 
 <h2>Food Menu</h2>
 
@@ -144,68 +25,60 @@ alert("Thank you for rating: " + rating + " stars")
 <div class="food">
 <img src="https://images.unsplash.com/photo-1601924582975-7e0f6d8f5c39">
 <h3>Pizza</h3>
-<p>₹200</p>
-<button onclick="selectFood('Pizza')">Select</button>
+<p>Price: ₹200</p>
+<p>Calories: 285 kcal</p>
+<button onclick="addToCart('Pizza',200,285)">Add to Cart</button>
 </div>
 
 <div class="food">
 <img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
 <h3>Burger</h3>
-<p>₹120</p>
-<button onclick="selectFood('Burger')">Select</button>
+<p>Price: ₹120</p>
+<p>Calories: 250 kcal</p>
+<button onclick="addToCart('Burger',120,250)">Add to Cart</button>
 </div>
 
 <div class="food">
 <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb36">
 <h3>Sandwich</h3>
-<p>₹80</p>
-<button onclick="selectFood('Sandwich')">Select</button>
+<p>Price: ₹80</p>
+<p>Calories: 150 kcal</p>
+<button onclick="addToCart('Sandwich',80,150)">Add to Cart</button>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+<h3>Biryani</h3>
+<p>Price: ₹250</p>
+<p>Calories: 300 kcal</p>
+<button onclick="addToCart('Biryani',250,300)">Add to Cart</button>
 </div>
 
 </div>
 
-<h2 id="recommend"></h2>
+<h2>Your Cart</h2>
 
 <div class="order-box">
 
-<h3>Quick Order</h3>
+<p id="cartItems"></p>
 
-<input type="text" id="foodname" placeholder="Selected Food">
+<p><b>Total Price:</b> ₹ <span id="totalPrice">0</span></p>
 
-<input type="text" placeholder="Your Name">
-
-<input type="text" placeholder="Delivery Address">
+<p><b>Total Calories:</b> <span id="totalCalories">0</span> kcal</p>
 
 <button onclick="placeOrder()">Place Order</button>
 
 </div>
 
-<div class="rating">
+<h2>Healthy Suggestion</h2>
 
-<h3>Rate Our Food</h3>
-
-<select id="rate">
-
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-
-</select>
-
-<br><br>
-
-<button onclick="submitRating()">Submit Rating</button>
-
-</div>
+<p id="suggestion" style="text-align:center;font-size:18px;color:green;"></p>
 
 <footer>
-
-<p>© 2026 Smart Food Delivery Website</p>
-
+<p>© 2026 Smart Food Delivery</p>
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
-
