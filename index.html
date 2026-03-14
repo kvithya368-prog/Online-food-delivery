@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Online Food Delivery</title>
+<title>Smart Food Delivery</title>
 
 <style>
+
 body{
 font-family: Arial;
 margin:0;
-background:#f5f5f5;
+background:#f4f4f4;
 }
 
 header{
 background:#ff5722;
 color:white;
-padding:15px;
+text-align:center;
+padding:20px;
+}
+
+h2{
 text-align:center;
 }
 
 .menu{
 display:flex;
+flex-wrap:wrap;
 justify-content:center;
 gap:20px;
 padding:20px;
-flex-wrap:wrap;
 }
 
 .food{
 background:white;
-padding:20px;
+width:220px;
+padding:15px;
 border-radius:10px;
-width:200px;
 text-align:center;
-box-shadow:0 0 5px gray;
+box-shadow:0 0 6px gray;
 }
 
 .food img{
@@ -53,28 +58,86 @@ button:hover{
 background:#e64a19;
 }
 
-footer{
+.order-box{
+background:white;
+padding:20px;
+width:300px;
+margin:20px auto;
+border-radius:10px;
+box-shadow:0 0 6px gray;
+}
+
+input{
+width:100%;
+padding:8px;
+margin:8px 0;
+}
+
+.rating{
 text-align:center;
-padding:10px;
+margin-top:20px;
+}
+
+footer{
 background:#333;
 color:white;
+text-align:center;
+padding:10px;
+margin-top:30px;
 }
+
 </style>
 
 <script>
-function order(food){
-alert(food + " added to your order!");
+
+function selectFood(food){
+document.getElementById("foodname").value=food;
 }
+
+function placeOrder(){
+alert("Order placed successfully!");
+}
+
+function recommendFood(){
+
+let hour = new Date().getHours()
+let food
+
+if(hour < 12){
+food = "Sandwich"
+}
+else if(hour < 18){
+food = "Burger"
+}
+else{
+food = "Pizza"
+}
+
+document.getElementById("recommend").innerHTML =
+"Recommended food for you: " + food
+
+}
+
+function submitRating(){
+
+let rating = document.getElementById("rate").value
+
+alert("Thank you for rating: " + rating + " stars")
+
+}
+
 </script>
 
 </head>
 
-<body>
+<body onload="recommendFood()">
 
 <header>
-<h1>Online Food Delivery</h1>
-<p>Order your favorite food</p>
+<h1>Smart Online Food Delivery</h1>
+<p>Order food easily and quickly</p>
 </header>
+
+<h2>Food Menu</h2>
 
 <div class="menu">
 
@@ -82,28 +145,67 @@ alert(food + " added to your order!");
 <img src="https://images.unsplash.com/photo-1601924582975-7e0f6d8f5c39">
 <h3>Pizza</h3>
 <p>₹200</p>
-<button onclick="order('Pizza')">Order</button>
+<button onclick="selectFood('Pizza')">Select</button>
 </div>
 
 <div class="food">
 <img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
 <h3>Burger</h3>
 <p>₹120</p>
-<button onclick="order('Burger')">Order</button>
+<button onclick="selectFood('Burger')">Select</button>
 </div>
 
 <div class="food">
 <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb36">
 <h3>Sandwich</h3>
 <p>₹80</p>
-<button onclick="order('Sandwich')">Order</button>
+<button onclick="selectFood('Sandwich')">Select</button>
 </div>
+
+</div>
+
+<h2 id="recommend"></h2>
+
+<div class="order-box">
+
+<h3>Quick Order</h3>
+
+<input type="text" id="foodname" placeholder="Selected Food">
+
+<input type="text" placeholder="Your Name">
+
+<input type="text" placeholder="Delivery Address">
+
+<button onclick="placeOrder()">Place Order</button>
+
+</div>
+
+<div class="rating">
+
+<h3>Rate Our Food</h3>
+
+<select id="rate">
+
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+
+</select>
+
+<br><br>
+
+<button onclick="submitRating()">Submit Rating</button>
 
 </div>
 
 <footer>
-<p>© 2026 Online Food Delivery</p>
+
+<p>© 2026 Smart Food Delivery Website</p>
+
 </footer>
 
 </body>
 </html>
+
