@@ -1,35 +1,69 @@
-function selectFood(food){
-document.getElementById("foodname").value=food;
+let cart = []
+let totalPrice = 0
+let totalCalories = 0
+
+function addToCart(name,price,calories){
+
+cart.push(name)
+
+totalPrice += price
+totalCalories += calories
+
+document.getElementById("cartItems").innerHTML =
+"Items: " + cart.join(", ")
+
+document.getElementById("totalPrice").innerHTML = totalPrice
+document.getElementById("totalCalories").innerHTML = totalCalories
+
+checkCalories()
+
 }
 
 function placeOrder(){
-alert("Order placed successfully!");
+
+alert("Order placed successfully!")
+
+cart = []
+totalPrice = 0
+totalCalories = 0
+
+document.getElementById("cartItems").innerHTML = ""
+document.getElementById("totalPrice").innerHTML = 0
+document.getElementById("totalCalories").innerHTML = 0
+
 }
 
-function recommendFood(){
+function getLocation(){
 
-let hour = new Date().getHours()
-let food
+if(navigator.geolocation){
 
-if(hour < 12){
-food = "Sandwich"
+navigator.geolocation.getCurrentPosition(showPosition)
+
 }
-else if(hour < 18){
-food = "Burger"
+
+}
+
+function showPosition(position){
+
+document.getElementById("location").innerHTML =
+"Latitude: " + position.coords.latitude +
+"<br>Longitude: " + position.coords.longitude
+
+}
+
+function checkCalories(){
+
+if(totalCalories > 500){
+
+document.getElementById("suggestion").innerHTML =
+"⚠ High calories! Try healthy food like salad or fruit."
+
 }
 else{
-food = "Pizza"
-}
 
-document.getElementById("recommend").innerHTML =
-"Recommended food for you: " + food
+document.getElementById("suggestion").innerHTML =
+"✅ Good choice! Your calorie intake is balanced."
 
 }
-
-function submitRating(){
-
-let rating = document.getElementById("rate").value
-
-alert("Thank you for rating: " + rating + " stars")
 
 }
