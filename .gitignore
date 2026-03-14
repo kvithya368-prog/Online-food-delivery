@@ -1,0 +1,11 @@
+# Node.js
+node_modules/
+
+# Environment Variables
+.env
+
+# Build Folders
+build/
+
+# VS Code
+.vscode/
