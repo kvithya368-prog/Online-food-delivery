@@ -1,68 +1,52 @@
-let cart = []
-let totalPrice = 0
-let totalCalories = 0
+let cart=[]
+let totalPrice=0
 
-function addToCart(name,price,calories){
+function addToCart(name,price){
 
 cart.push(name)
 
-totalPrice += price
-totalCalories += calories
+totalPrice+=price
 
-document.getElementById("cartItems").innerHTML =
-"Items: " + cart.join(", ")
+document.getElementById("cartItems").innerHTML="Items: "+cart.join(", ")
 
-document.getElementById("totalPrice").innerHTML = totalPrice
-document.getElementById("totalCalories").innerHTML = totalCalories
-
-checkCalories()
+document.getElementById("totalPrice").innerHTML=totalPrice
 
 }
 
-function placeOrder(){
+/* search food */
 
-alert("Order placed successfully!")
+function searchFood(){
 
-cart = []
-totalPrice = 0
-totalCalories = 0
+let input=document.getElementById("search").value.toLowerCase()
 
-document.getElementById("cartItems").innerHTML = ""
-document.getElementById("totalPrice").innerHTML = 0
-document.getElementById("totalCalories").innerHTML = 0
+let foods=document.getElementsByClassName("food")
 
-}
+for(let i=0;i<foods.length;i++){
 
-function getLocation(){
+let title=foods[i].getElementsByTagName("h3")[0]
 
-if(navigator.geolocation){
-
-navigator.geolocation.getCurrentPosition(showPosition)
+if(title.innerHTML.toLowerCase().includes(input))
+foods[i].style.display="block"
+else
+foods[i].style.display="none"
 
 }
 
 }
 
-function showPosition(position){
+/* language change */
 
-document.getElementById("location").innerHTML =
-"Latitude: " + position.coords.latitude +
-"<br>Longitude: " + position.coords.longitude
+function changeLanguage(lang){
 
-}
+if(lang=="ta"){
 
-function checkCalories(){
-
-if(totalCalories > 500){
-
-document.getElementById("suggestion").innerHTML =
-"⚠ High calories! Try healthy food like salad or fruit."
+document.getElementById("title").innerHTML="ஸ்மார்ட் உணவு டெலிவரி"
 
 }
+
 else{
 
-document.getElementById("suggestion").innerHTML =
-"✅ Good choice! Your calorie intake is balanced."
+document.getElementById("title").innerHTML="Smart Food Delivery"
 
 }
 
