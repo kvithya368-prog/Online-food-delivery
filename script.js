@@ -13,7 +13,7 @@ document.getElementById("totalPrice").innerHTML=totalPrice
 
 }
 
-/* search food */
+/* search */
 
 function searchFood(){
 
@@ -34,19 +34,31 @@ foods[i].style.display="none"
 
 }
 
-/* language change */
+/* language */
 
 function changeLanguage(lang){
 
 if(lang=="ta"){
-
 document.getElementById("title").innerHTML="ஸ்மார்ட் உணவு டெலிவரி"
+}
+else{
+document.getElementById("title").innerHTML="Smart Food Delivery"
+}
 
 }
 
-else{
+/* location */
 
-document.getElementById("title").innerHTML="Smart Food Delivery"
+function getLocation(){
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(function(position){
+
+alert("Latitude: "+position.coords.latitude+
+" Longitude: "+position.coords.longitude)
+
+})
 
 }
 
